@@ -39,7 +39,7 @@ struct Index {
         .fontSize(12)
         .onChange(v => {
           this.note = v
-          this.log = '✏️ Note typed: ' + v
+          this.log = `✏️ Note typed: ${v}`
         })
         .placeholderFont({ size: 12 })
 
@@ -58,7 +58,7 @@ struct Index {
             this.encryptText = buffer.from(encrypted.data).toString()
             this.encrypted = encrypted;
             this.decryptText = '';
-            this.log = '✅ Note encrypted successfully:\n' + this.encryptText;
+            this.log = `✅ Note encrypted successfully:\n${this.encryptText}`;
           } catch (e) {
             this.log = '❌ Encryption failed';
           }
@@ -74,7 +74,7 @@ struct Index {
             const symKey = cryptoService.genSymKeyByData(keyData);
             const decryptedData = cryptoService.decryptMessage(symKey, this.encrypted);
             this.decrypted = buffer.from(decryptedData.data).toString('utf-8');
-            this.log = '🔓 Note decrypted successfully:\n' + this.decrypted;
+            this.log = `🔓 Note decrypted successfully:\n${this.decrypted}`;
           } catch (e) {
             this.decrypted = '';
             this.log = '❌ Decryption failed';
